@@ -76,6 +76,8 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 
 	defihubmodulekeeper "github.com/gabrielscota/defihub/x/defihub/keeper"
+	financiamentomodulekeeper "github.com/gabrielscota/defihub/x/financiamento/keeper"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	"github.com/gabrielscota/defihub/docs"
@@ -141,7 +143,8 @@ type App struct {
 	ScopedICAHostKeeper       capabilitykeeper.ScopedKeeper
 	ScopedKeepers             map[string]capabilitykeeper.ScopedKeeper
 
-	DefihubKeeper defihubmodulekeeper.Keeper
+	DefihubKeeper       defihubmodulekeeper.Keeper
+	FinanciamentoKeeper financiamentomodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
@@ -246,6 +249,7 @@ func New(
 		&app.GroupKeeper,
 		&app.CircuitBreakerKeeper,
 		&app.DefihubKeeper,
+		&app.FinanciamentoKeeper,
 		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 	); err != nil {
 		panic(err)

@@ -54,8 +54,11 @@ import (
 	"google.golang.org/protobuf/types/known/durationpb"
 
 	defihubmodulev1 "github.com/gabrielscota/defihub/api/defihub/defihub/module"
+	financiamentomodulev1 "github.com/gabrielscota/defihub/api/defihub/financiamento/module"
 	_ "github.com/gabrielscota/defihub/x/defihub/module" // import for side-effects
 	defihubmoduletypes "github.com/gabrielscota/defihub/x/defihub/types"
+	_ "github.com/gabrielscota/defihub/x/financiamento/module" // import for side-effects
+	financiamentomoduletypes "github.com/gabrielscota/defihub/x/financiamento/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
@@ -94,6 +97,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		defihubmoduletypes.ModuleName,
+		financiamentomoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -119,6 +123,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		defihubmoduletypes.ModuleName,
+		financiamentomoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -138,6 +143,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		defihubmoduletypes.ModuleName,
+		financiamentomoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -158,6 +164,7 @@ var (
 		{Account: ibctransfertypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner}},
 		{Account: ibcfeetypes.ModuleName},
 		{Account: icatypes.ModuleName},
+		{Account: financiamentomoduletypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner, authtypes.Staking}},
 		// this line is used by starport scaffolding # stargate/app/maccPerms
 	}
 
@@ -296,6 +303,10 @@ var (
 			{
 				Name:   defihubmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&defihubmodulev1.Module{}),
+			},
+			{
+				Name:   financiamentomoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&financiamentomodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},

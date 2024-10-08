@@ -1,0 +1,17 @@
+syntax = "proto3";
+package defihub.financiamento;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "defihub/financiamento/params.proto";
+
+option go_package = "github.com/gabrielscota/defihub/x/financiamento/types";
+
+// GenesisState defines the financiamento module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

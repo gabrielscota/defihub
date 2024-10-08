@@ -1,0 +1,13 @@
+syntax = "proto3";
+package defihub.financiamento;
+
+option go_package = "github.com/gabrielscota/defihub/x/financiamento/types";
+
+message Emprestimo {
+  uint64 id = 1;
+  uint64 valor = 2;
+  uint64 prazo = 3;
+  string taxa = 4;
+  string devedor = 5;
+  string credor = 6;
+}
